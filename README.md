@@ -21,7 +21,7 @@
 * Sane handling of unexpected exceptions
 
 ## Making new app with this kit
-1. This demo work with Windows
+1. This demo work with Windows/ Update env.bat and edit package.json %VAR% -> $VAR to work with Linux
 1. Install [Node.js](https://nodejs.org/).
 1. Clone this starter kit
 1. [Set up an ESLint plugin in your code editor so that you catch coding errors and follow code style guidelines more easily!](https://medium.com/planet-arkency/catch-mistakes-before-you-run-you-javascript-code-6e524c36f0c8#.oboqsse48)
