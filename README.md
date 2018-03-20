@@ -18,11 +18,7 @@
 * Automatic asset versioning so that you can aggressively cache your assets in production
 * Server side rendering out of the box
 * Custom Apollo network interface that lets you add middleware to handle responses from GraphQL. This would be a good place to put any error handling that you want to do globally (e.g. unexpected errors from GraphQL, user authorization or authentication errors, etc.).
-* Sane handling of unexpected exceptions:
-    * Calls to log.error in client/server will log the error to the console/stdout and also send it to Rollbar.
-    * Unexpected exceptions in client-side code (including within asynchronous code): log.error + force refresh the app after an alert to the user
-    * Unexpected exceptions in non-GraphQL server-side code: log.error + crash the server. In dev, nodemon will wait for changes to restart the server. In production, you should handle restarting the server (e.g. set Heroku to auto-restart dynos on a crash).
-    * Unexpected exceptions in GraphQL code: log.error. This happens via a response middleware that is easily changeable.
+* Sane handling of unexpected exceptions
 
 ## Making new app with this kit
 1. This demo work with Windows
