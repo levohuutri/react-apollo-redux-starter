@@ -19,7 +19,8 @@
     "dev-start": "nodemon -e js,jsx,md,mustache -w ./src --exec \"npm run babel-src-server",
     "dev": "nf start -w --procfile ./dev-tools/Procfile.dev",
     "babel-src-server": "node dev-tools/babel-run ./src/server",
-    "babel-wp-server": "node dev-tools/babel-run ./webpack/server.js"
+    "babel-wp-server": "node dev-tools/babel-run ./webpack/server.js",
+    "browserstack": "node dev-tools/browserstack-run"
   },
   "lint-staged": {
     "*.{js,jsx}": [

@@ -1,0 +1,29 @@
+var BrowserStack = require("browserstack");
+var browserStackCredentials = {
+    username: "foo",
+    password: "p455w0rd!!1"
+};
+ 
+// REST API 
+var client = BrowserStack.createClient(browserStackCredentials);
+ 
+client.getBrowsers(function(error, browsers) {
+    console.log("The following browsers are available for testing");
+    console.log(browsers);
+});
+ 
+// Automate API 
+var automateClient = BrowserStack.createAutomateClient(browserStackCredentials);
+ 
+automateClient.getBrowsers(function(error, browsers) {
+    console.log("The following browsers are available for automated testing");
+    console.log(browsers);
+});
+ 
+// Screenshots API 
+var screenshotClient = BrowserStack.createScreenshotClient(browserStackCredentials);
+ 
+screenshotClient.getBrowsers(function(error, browsers) {
+    console.log("The following browsers are available for screenshots");
+    console.log(browsers);
+});
