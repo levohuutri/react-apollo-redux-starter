@@ -1,8 +1,9 @@
 import { createStore, combineReducers, compose, applyMiddleware } from 'redux'
 import { routerReducer, routerMiddleware } from 'react-router-redux'
-import ReduxThunk from 'redux-thunk'
+import createSagaMiddleware from 'redux-saga'
 import ApolloClientSingleton from '../network/apollo-client-singleton'
 import * as reducers from './reducers'
+import { fetchSaga } from './actions'
 
 export default class Store {
   constructor(history, initialState = {}) {
@@ -12,6 +13,8 @@ export default class Store {
       routing: routerReducer
     })
 
+    const sagaMiddleware = createSagaMiddleware()
+
     this.data = createStore(
       reducer,
       initialState,
@@ -19,10 +22,12 @@ export default class Store {
         applyMiddleware(
           routerMiddleware(history),
           ApolloClientSingleton.middleware(),
-          ReduxThunk.withExtraArgument(ApolloClientSingleton)
+          sagaMiddleware
         ),
          typeof window === 'object' && typeof window.devToolsExtension !== 'undefined' ? window.devToolsExtension() : f => f
       )
     )
+
+    sagaMiddleware.run(fetchSaga)
   }
 }
